@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
 echo $(pwd)
+current_commit=$(git rev-parse HEAD)
 pre_version=$(cat version.txt)
 
+version_commit=$(git rev-list HEAD -1 version.txt)
+
+if [[ $current_commit == $version_commit ]]; then
+  echo "Version has already added, push commits to remote."
+  exit 0
+fi
+
+# enable git hook script to read input from stdin
 exec < /dev/tty
 
 read -p "当前版本为：${pre_version}, 请输入本次提交的版本号：" cur_version
@@ -10,11 +19,17 @@ if [[ $cur_version =~ ^v([0-9]+\.){2}([0-9]+)$ ]]; then
   echo "新版本号为：$cur_version"
   read -p "请输入本次提交的版本信息：" version_info
   echo "版本信息为：$version_info"
+  # insert version and version description into head lines of version.md.
   echo "$(echo "# ${cur_version}"; echo "> ${version_info}"; echo ""; cat version.md)" > version.md
   echo $cur_version > version.txt
 else
   echo "版本号信息不规范：$cur_version, 请使用「v」开头，并带有三个数字的版本号，数字之间使用「.」连接。"
-  exit 1
 fi
+
+# add change to last commit without edit and verify
 git add .
 git commit --amend --no-edit --no-verify
+
+# stop push and run `git push` again, make sure the commit won't conflict with remote commit
+# more details: https://stackoverflow.com/questions/21334493/git-commit-in-pre-push-hook
+exit 1
