@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+pre_version=$(cat version.txt)
+
+read -p "当前版本为：${pre_version}, 请输入本次提交的版本号：" -n 1 -r
+if [[ $REPLY =~ ^[v](\d+\.){2}(\d+)$ ]]; then
+  echo "新版本号为：$REPLY"
+  cur_version=$REPLY
+  read -p "请输入本次提交的版本信息：" -n 1 -r
+  echo "版本信息为：$REPLY"
+  sed -i '1s/^/> $REPLY\n\n/' version.md
+  sed -i '1s/^/# $cur_version\n/' version.md
+else
+  echo "版本号信息不规范：$REPLY, 请使用「v」开头，并带有三个数字的版本号，数字之间使用「.」连接。"
+  exit 1
+fi
+git add .
+git commit --amend --no-verify
