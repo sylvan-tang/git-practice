@@ -18,3 +18,4 @@ function create_hook_link() {
 
 create_hook_link pre-commit
 create_hook_link pre-push
+create_hook_link commit-msg
