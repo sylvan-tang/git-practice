@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+# check if commit message is the right format
+msg=$(cat $1)
+python3 ./bin/commit_msg.py <<EOF
+$msg
+EOF
