@@ -5,6 +5,7 @@ msg_patterns = [
     re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Closes \#\d+)+$"),
     re.compile("^Merge branch.*$"),
     re.compile("^Revert.*$"),
+    re.compile("^Release.*$"),
 ]
 
 
