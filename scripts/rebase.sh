@@ -18,13 +18,13 @@ echo ""
 echo "make change and add commit"
 echo "first line into readme.md" >> README.md
 git add .
-git commit -m "first commit." --no-edit --quiet
+git commit -m "Feature: first commit. Closes #2" --no-edit --quiet
 echo "second line into readme.md" >> README.md
 git add .
-git commit -m "second commit." --no-edit --quiet
+git commit -m "Feature: second commit. Closes #2" --no-edit --quiet
 echo "third line into readme.md" >> README.md
 git add .
-git commit -m "third commit." --no-edit --quiet
+git commit -m "Feature: third commit. Closes #2" --no-edit --quiet
 git --no-pager log --decorate=short --pretty=oneline -n4
 
 echo ""
@@ -34,10 +34,10 @@ git branch -D ${branch_name}-B
 git checkout -b ${branch_name}-B
 echo "first line into readme.md on ${branch_name}-B" >> README.md
 git add .
-git commit -m "first commit on ${branch_name}-B." --no-edit --quiet
+git commit -m "Feature: first commit on ${branch_name}-B. Closes #2" --no-edit --quiet
 echo "second line into readme.md on ${branch_name}-B" >> README.md
 git add .
-git commit -m "second commit on ${branch_name}-B." --no-edit --quiet
+git commit -m "Feature: second commit on ${branch_name}-B. Closes #2" --no-edit --quiet
 git --no-pager log --decorate=short --pretty=oneline -n4
 
 

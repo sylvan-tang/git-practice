@@ -16,7 +16,7 @@ echo ""
 echo "make change and add commit"
 echo "add new line into readme.md" >> README.md
 git add .
-git commit -m "this commit must be change!" --no-edit --quiet
+git commit -m "Feature: this commit must be change! Closes #2" --no-edit --quiet
 git --no-pager log --decorate=short --pretty=oneline -n1
 
 echo ""
@@ -36,11 +36,11 @@ echo ""
 echo "there is another way to change the commit message info which the message is not the latest one ..."
 echo "first line into readme.md" >> README.md
 git add .
-git commit -m "this commit is latest!" --no-edit --quiet
+git commit -m "Feature: this commit is latest! Closes #2" --no-edit --quiet
 
 echo "second line into readme.md" >> README.md
 git add .
-git commit -m "this commit is latest!" --no-edit --quiet
+git commit -m "Feature: this commit is latest! Closes #2" --no-edit --quiet
 
 read -p "change your commit info?[y/N]: " confirm
 if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]];

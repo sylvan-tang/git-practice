@@ -1,15 +1,21 @@
 import re
 import sys
 
-msg_pattern = re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Closes \#\d+)+$")
+msg_patterns = [
+    re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Closes \#\d+)+$"),
+    re.compile("^Merge branch .* into .*$"),
+]
 
 
 def check_msg_format():
     for line in sys.stdin.readlines():
-        m = msg_pattern.match(line.strip())
-        if m:
-            return True
-    print(f"commit message with regex pattern: {msg_pattern.__str__()}")
+        for msg_pattern in msg_patterns:
+            m = msg_pattern.match(line.strip())
+            if m:
+                return True
+    print(f"commit message with regex patterns:")
+    for msg_pattern in msg_patterns:
+        print(f"    {msg_pattern.__str__()}")
     return False
 
 
