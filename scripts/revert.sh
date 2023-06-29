@@ -5,11 +5,10 @@ echo "current branch is $current_branch"
 
 filename=$(basename "$0")
 branch_name=feature/"${filename%%.*}"
-echo ""
-echo "Checkout to an new branch ${branch_name}..."
-
 git branch -D ${branch_name}
 
+echo ""
+echo "Checkout to an new branch ${branch_name}..."
 git checkout -b ${branch_name}
 
 echo ""
@@ -31,7 +30,7 @@ git --no-pager log --decorate=short --pretty=oneline -n4
 revert_commit_B=$(git --no-pager log --decorate=short --pretty=oneline -n4 | head -n 2 | tail -n 1 | awk '{print $1}')
 revert_commit_A=$(git --no-pager log --decorate=short --pretty=oneline -n4 | head -n 3 | tail -n 1 | awk '{print $1}')
 
-read -p "revert pick ${revert_commit_A}?[y/N]: " confirm
+read -p "revert ${revert_commit_A}?[y/N]: " confirm
 if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]];
 then
   git revert ${revert_commit_A}^..${revert_commit_B}

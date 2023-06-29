@@ -5,10 +5,9 @@ echo "current branch is $current_branch"
 
 filename=$(basename "$0")
 branch_name=feature/"${filename%%.*}"
+git branch -D ${branch_name}
 echo ""
 echo "Checkout to an new branch ${branch_name}..."
-
-git branch -D ${branch_name}
 
 git checkout -b ${branch_name}
 

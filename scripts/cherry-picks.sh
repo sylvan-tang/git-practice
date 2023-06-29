@@ -5,11 +5,11 @@ echo "current branch is $current_branch"
 
 filename=$(basename "$0")
 branch_name=feature/"${filename%%.*}"
+git branch -D ${branch_name}
+git branch -D ${branch_name}-B
+
 echo ""
 echo "Checkout to an new branch ${branch_name}..."
-
-git branch -D ${branch_name}
-
 git checkout -b ${branch_name}
 
 echo ""
@@ -34,7 +34,6 @@ cherry_pick_commit_A=$(git --no-pager log --decorate=short --pretty=oneline -n4 
 echo ""
 echo "make change base on ${current_branch}..."
 git checkout ${current_branch}
-git branch -D ${branch_name}-B
 git checkout -b ${branch_name}-B
 echo "first line into readme.md on ${branch_name}-B" >> README.md
 git add .

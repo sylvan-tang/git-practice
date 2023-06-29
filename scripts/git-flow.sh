@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
+
+git branch -D release/v1.1.0
+git branch -D feature/test-flow
+git branch -D main
+git branch -D develop
+git fetch origin main:main
+git branch --set-upstream-to=origin/main main
+git fetch origin develop:develop
+git branch --set-upstream-to=origin/develop develop
+
 set -e
+
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 echo "current branch is $current_branch"
 
@@ -24,7 +35,6 @@ echo ""
 echo "Start feature test-flow..."
 
 git checkout develop
-
 git-flow feature start test-flow
 
 echo ""
@@ -41,5 +51,4 @@ git commit -m "Feature: third commit. Closes #2" --no-edit --quiet
 git --no-pager log --decorate=short --pretty=oneline -n4
 
 git-flow feature finish test-flow
-
 git-flow release finish v1.1.0
