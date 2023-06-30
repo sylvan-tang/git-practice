@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+# Runs at the end of git flow release start
+#
+# Positional arguments:
+# $1 The version (including the version prefix)
+#
+# The following variables are available as they are exported by git-flow:
+#
+# MASTER_BRANCH - The branch defined as Master
+# DEVELOP_BRANCH - The branch defined as Develop
+
+VERSION=$1
+
+# Implement your script here.
+git push origin release/$VERSION

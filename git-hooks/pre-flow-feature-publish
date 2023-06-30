@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.develop
+
+$SCRIPT_PATH/filter-flow-feature-finish-message
+
+git push -f

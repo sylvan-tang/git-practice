@@ -2,9 +2,11 @@ import re
 import sys
 
 msg_patterns = [
-    re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Closes \#\d+)+$"),
+    re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Ref \#\d+)+$"),
+    re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Related to \#\d+)+$"),
     re.compile("^Merge branch.*$"),
     re.compile("^Revert.*$"),
+    re.compile("^Hotfix.*$"),
     re.compile("^Release.*$"),
 ]
 
@@ -15,7 +17,7 @@ def check_msg_format():
             m = msg_pattern.match(line.strip())
             if m:
                 return True
-    print(f"commit message with regex patterns:")
+    print(f"commit message with one of regex patterns below:")
     for msg_pattern in msg_patterns:
         print(f"    {msg_pattern.__str__()}")
     return False
