@@ -1,3 +1,12 @@
+# RELEASE v2.0.1
+
+| commit | commit author name | commit date | title |
+| ---- | ---- | ---- | ---- |
+| e046dd9 | GitHub | 2023-07-03 | Merge pull request #15 from sylvan-tang/hotfix/v2.0.0.1 |
+| 44576fe | sylvan | 2023-07-03 | Bugfix: fix get next version. Ref: #992 |
+| 498ef07 | sylvan | 2023-07-03 | Bugfix: fix base_branch from git config. Ref: #991 (#12) |
+| b694ab2 | sylvan | 2023-07-03 | Bugfix: support git-flow delete command. Ref #999 (#10) |
+
 # RELEASE v1.2.0
 
 | commit | commit author name | commit date | title |
