@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 #
 # Runs at the end of git flow feature start
 #
@@ -21,4 +21,4 @@ BASE=$4
 
 # Implement your script here.
 
-exit 1
+exit 0

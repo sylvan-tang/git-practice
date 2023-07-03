@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 if [ -z "$VERSION" ]; then
     if [ "$1" == "hotfix" ]; then
         VERSION=$(__get_hotfix_version_bumplevel)

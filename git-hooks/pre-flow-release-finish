@@ -1,23 +1,30 @@
 #!/usr/bin/env bash
-set -x
-#
-# Runs before git flow release finish
-#
-# Positional arguments:
-# $1    The version (including the version prefix)
-# $2    The origin remote
-# $3    The full branch name (including the release prefix)
-#
-# The following variables are available as they are exported by git-flow:
-#
-# MASTER_BRANCH - The branch defined as Master
-# DEVELOP_BRANCH - The branch defined as Develop
-#
-VERSION=$1
-ORIGIN=$2
-BRANCH=$3
 
-# Implement your script here.
 
-# To terminate the git-flow action, return a non-zero exit code.
-exit 0
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+$SCRIPT_PATH/filter-flow-release-finish-message
+$SCRIPT_PATH/filter-flow-release-finish-tag-message
+
+# Runs at the end of git flow release finish
+# generate change between two tag into a markdown table with commit, author, date and title
+second_to_last_tag_commit=$(git show-ref --tags | tail -n 2 | head -n 1 | awk '{print $1}')
+last_tag_commit=$(git show-ref --tags | tail -n 1  | awk '{print $1}')
+last_tag=$(git show-ref --tags | tail -n 1 | awk '{print $2}' | cut -d / -f 3)
+
+echo "# RELEASE $last_tag" > CHANGELOG.tmp.md
+echo "| commit | commit author name | commit date | title |" >> CHANGELOG.tmp.md
+echo "| ---- | ---- | ---- | ---- |" >> CHANGELOG.tmp.md
+
+git --no-pager log --decorate=short --pretty=format:"| %h | %cn | %cs | %s |" $second_to_last_tag_commit..$last_tag_commit >> CHANGELOG.tmp.md
+
+if [[ -f CHANGELOG.md ]]; then
+  cat CHANGELOG.md >> CHANGELOG.tmp.md
+fi
+mv CHANGELOG.tmp.md CHANGELOG.md
+
+git add .
+git commit --amend --no-edit
+
+# disable finish in local mode
+exit 1

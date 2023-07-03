@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 
 # Runs during git flow hotfix start
 #

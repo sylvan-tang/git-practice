@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 function __print_usage {
     echo "Usage: $(basename $0) [major|frame|release|hotfix|<semver>] [<version_file>] [<version_sort>]"
     echo "    major|frame|release|hotfix: Version will be bumped accordingly. "
@@ -96,6 +96,6 @@ fi
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-VERSION_BUMPED=$(python3 $SCRIPT_PATH/next_version.py $VERSION_PREFIX $TAG_VERSION $RELEASE_VERSION $HOTFIX_VERSION $VERSION_UPDATE_MODE)
+VERSION_BUMPED=$(python3 $SCRIPT_PATH/next_version.py next_version $VERSION_PREFIX $TAG_VERSION $RELEASE_VERSION $HOTFIX_VERSION $VERSION_UPDATE_MODE)
 
 __print_version

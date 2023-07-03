@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 #
 # Runs before git flow feature delete
 #
@@ -20,4 +20,4 @@ BRANCH=$3
 # Implement your script here.
 
 # To terminate the git-flow action, return a non-zero exit code.
-exit 1
+exit 0

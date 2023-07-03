@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
-set -x
+
 #
 # Runs before git flow hotfix start
 #
 # Positional arguments:
 # $1    The version (including the version prefix)
-# $2    The origin remote
-# $3    The full branch name (including the feature prefix)
-# $4    The base from which this feature is started
 #
 # The following variables are available as they are exported by git-flow:
 #
@@ -15,11 +12,18 @@ set -x
 # DEVELOP_BRANCH - The branch defined as Develop
 #
 VERSION=$1
-ORIGIN=$2
-BRANCH=$3
-BASE=$4
 
 # Implement your script here.
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.master
 
+NEWEST_VERSION=$(${SCRIPT_PATH}/filter-flow-hotfix-start-version)
+if [[ "$VERSION" != "$NEWEST_VERSION" ]]; then
+  BIGGER_VERSION=$(python3 ${SCRIPT_PATH}/modules/next_version.py get_bigger_version v $VERSION $NEWEST_VERSION $NEWEST_VERSION "HOTFIX")
+  if [[ "$VERSION" != "$BIGGER_VERSION" ]]; then
+    echo "Use version: $NEWEST_VERSION"
+    exit 1
+  fi
+fi
 # To terminate the git-flow action, return a non-zero exit code.
 exit 0

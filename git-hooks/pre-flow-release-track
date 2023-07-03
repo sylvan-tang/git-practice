@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 #
 # Runs before git flow release track
 #
