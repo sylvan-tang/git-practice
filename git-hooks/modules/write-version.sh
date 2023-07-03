@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 VERSION_FILE=$(__get_version_file)
 VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)

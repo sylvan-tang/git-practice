@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 function __print_usage {
     echo "Usage: $(basename $0) [major|frame|release|hotfix|<semver>] [<version_file>] [<version_sort>]"
     echo "    major|frame|release|hotfix: Version will be bumped accordingly. "

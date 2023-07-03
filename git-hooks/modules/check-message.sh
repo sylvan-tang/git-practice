@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 set -e
 
 # check if commit message is the right format

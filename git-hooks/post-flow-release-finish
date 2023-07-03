@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 # Runs at the end of git flow release finish
 # generate change between two tag into a markdown table with commit, author, date and title

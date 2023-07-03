@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 if [ -z "$VERSION_TAG_PLACEHOLDER" ]; then
     VERSION_TAG_PLACEHOLDER="%tag%"

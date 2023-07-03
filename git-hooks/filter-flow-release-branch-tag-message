@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -x
 #
 # Runs during git flow release branch and a tag message is given
 #
