@@ -20,13 +20,15 @@ def get_bigger_version_number(version_prefix, tag_version, release_version, hotf
     else:
         tag_version = tag_version[:5]
         release_version = release_version[:5]
-
     tag_version_number = [int(n) for n in tag_version.split(".")]
     release_version_number = [int(n) for n in release_version.split(".")]
     version_number = release_version_number
     for i, n in enumerate(tag_version_number):
         if n > release_version_number[i]:
             version_number = tag_version_number
+            break
+        if n < release_version_number[i]:
+            version_number = release_version_number
             break
     return version_number
 
