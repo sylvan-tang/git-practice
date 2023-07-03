@@ -35,7 +35,7 @@ if [[ -z "${middle_command}" ]]; then
 fi
 
 ${GIT_HOOK_PATH}/pre-flow-$middle_command ${@:$i}
-if [[ $END_KEY != "delete" ]]; then
+if [[ $END_KEY != "delete" && $middle_command != "hotfix-publish" ]]; then
   git-flow $@
 fi
 ${GIT_HOOK_PATH}/post-flow-$middle_command ${@:$i}

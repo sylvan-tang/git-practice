@@ -2,7 +2,7 @@ import re
 import sys
 
 msg_patterns = [
-    re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Ref \#\d+)+$"),
+    re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Ref:? \#\d+)+$"),
     re.compile("^(Feature|Hotfix|Bugfix):( \S+)+( Related to \#\d+)+$"),
     re.compile("^Merge branch.*$"),
     re.compile("^Revert.*$"),

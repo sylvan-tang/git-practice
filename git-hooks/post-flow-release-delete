@@ -18,7 +18,7 @@ VERSION=$1
 # Implement your script here.
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 if [[ "$current_branch" = "release/$VERSION" ]];then
-  base_branch=$(git config --list | grep gitflow.branch.master)
+  base_branch=$(git config --list | grep gitflow.branch.develop | cut -d '=' -f 2)
   git checkout $base_branch
 fi
 git branch -D release/$VERSION
