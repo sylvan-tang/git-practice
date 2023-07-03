@@ -27,17 +27,15 @@ if [[ ! -z $tag_exists ]]; then
   exit 0
 fi
 echo "# RELEASE $current_tag" > CHANGELOG.tmp.md
+echo "" >> CHANGELOG.tmp.md
 echo "| commit | commit author name | commit date | title |" >> CHANGELOG.tmp.md
 echo "| ---- | ---- | ---- | ---- |" >> CHANGELOG.tmp.md
 
 git --no-pager log --decorate=short --pretty=format:"| %h | %cn | %cs | %s |" $last_tag_commit..$last_commit >> CHANGELOG.tmp.md
+echo "" >> CHANGELOG.tmp.md
 
 if [[ -f CHANGELOG.md ]]; then
+  echo "" >> CHANGELOG.tmp.md
   cat CHANGELOG.md >> CHANGELOG.tmp.md
 fi
 mv CHANGELOG.tmp.md CHANGELOG.md
-
-git add .
-git commit --amend --no-edit
-
-git push -f
