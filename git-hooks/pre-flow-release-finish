@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -e
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -26,5 +26,5 @@ mv CHANGELOG.tmp.md CHANGELOG.md
 git add .
 git commit --amend --no-edit
 
-# disable finish in local mode
+echo "disable finish in local mode"
 exit 1

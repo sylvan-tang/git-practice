@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 END_KEY_WORDS=("branch" "delete" "finish" "publish" "pull" "start" "track")
 GIT_HOOK_PATH=$(git config --list | grep "gitflow.path.hooks=" | cut -d "=" -f 2)

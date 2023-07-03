@@ -7,6 +7,7 @@
 # Implement your script here.
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 ${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.develop
 
 exit 0
