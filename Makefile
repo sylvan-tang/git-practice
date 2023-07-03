@@ -14,7 +14,7 @@ endif
 
 
 .PHONY: git-flow
-## pre git-flow command
+## add pre and post hooks for git-flow command
 GIT_HOOK_PATH := $(shell git config --list | grep "gitflow.path.hooks=" | cut -d "=" -f 2)
 git-flow:
 	@printf "🐋 \033[1;32m===> Run: git-flow $(GIT_FLOW_ARGS)...\033[0m\n"
@@ -27,3 +27,9 @@ git-flow:
   	$(eval LASTWORD := $(lastword $(GIT_FLOW_ARGS)))
 
 
+.PHONY: changelog
+## generate release change log
+GIT_HOOK_PATH := $(shell git config --list | grep "gitflow.path.hooks=" | cut -d "=" -f 2)
+changelog:
+	@printf "🐋 \033[1;32m===> Generate change log...\033[0m\n"
+	$(GIT_HOOK_PATH)/generate-changelog.sh

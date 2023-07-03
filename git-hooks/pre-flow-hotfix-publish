@@ -9,4 +9,4 @@ $SCRIPT_PATH/filter-flow-hotfix-finish-message
 
 $SCRIPT_PATH/filter-flow-hotfix-finish-tag-message
 
-exit 0
+git push -f
