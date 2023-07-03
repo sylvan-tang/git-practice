@@ -19,4 +19,4 @@ BRANCH=$3
 
 # Implement your script here.
 
-exit 0
+exit 1

@@ -18,6 +18,6 @@ ORIGIN=$2
 BRANCH=$3
 
 # Implement your script here.
-
+echo $NAM $ORIGIN $BRANCH
 # To terminate the git-flow action, return a non-zero exit code.
-exit 0
+exit 1

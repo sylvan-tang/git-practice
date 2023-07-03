@@ -21,4 +21,4 @@ BASE=$4
 
 # Implement your script here.
 
-exit 0
+exit 1

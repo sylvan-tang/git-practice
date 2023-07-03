@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 COLOR_RED=$(printf '\e[0;31m')
 COLOR_DEFAULT=$(printf '\e[m')

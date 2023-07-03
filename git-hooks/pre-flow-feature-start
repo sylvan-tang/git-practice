@@ -22,4 +22,4 @@ BASE=$4
 # Implement your script here.
 
 # To terminate the git-flow action, return a non-zero exit code.
-exit 0
+exit 1

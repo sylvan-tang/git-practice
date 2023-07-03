@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 CURRENT_BRANCH=$(git symbolic-ref HEAD)
 
