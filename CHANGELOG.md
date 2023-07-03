@@ -1,4 +1,11 @@
+# RELEASE v1.2.0
+
+| commit | commit author name | commit date | title |
+| ---- | ---- | ---- | ---- |
+| 8d67deb | sylvan | 2023-07-03 | Bugfix: support git-flow delete command. Ref #999 |
+
 # RELEASE v1.1.1
+
 | commit | commit author name | commit date | title |
 | ---- | ---- | ---- | ---- |
 | dd536a8 | sylvan | 2023-07-03 | Release: publish v1.1.1 to product |
