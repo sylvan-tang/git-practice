@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 #
 # Runs at the end of git flow hotfix publish
@@ -20,5 +21,3 @@ BRANCH=$3
 # Implement your script here.
 
 git push --tags
-
-exit 0

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -e
 
 # Runs at the end of git flow release start
 #
@@ -15,5 +15,3 @@ VERSION=$1
 
 # Implement your script here.
 git push origin release/$VERSION
-
-exit 0
