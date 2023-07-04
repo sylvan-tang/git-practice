@@ -2,7 +2,7 @@
 set -e
 
 END_KEY_WORDS=("delete" "finish" "publish" "start" "track")
-GIT_HOOK_PATH=$(git config --list | grep "gitflow.path.hooks=" | cut -d "=" -f 2)
+GIT_HOOK_PATH=$(git config --list | grep "gitflow.path.hooks=" | tail -n 1 | cut -d "=" -f 2)
 
 LAST_WORD="${@: -1}"
 if [[ $LAST_WORD == [hH] || $LAST_WORD == [hH][eE][lL][pP] ]];then
@@ -35,7 +35,7 @@ if [[ -z "${middle_command}" ]]; then
 fi
 
 ${GIT_HOOK_PATH}/pre-flow-$middle_command ${@:$i}
-if [[ $END_KEY != "delete" && $middle_command != "hotfix-publish" ]]; then
+if [[ $END_KEY != "delete" && $END_KEY != "publish" ]]; then
   git-flow $@
 fi
 ${GIT_HOOK_PATH}/post-flow-$middle_command ${@:$i}

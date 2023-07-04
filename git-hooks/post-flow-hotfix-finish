@@ -17,6 +17,16 @@ VERSION=$1
 ORIGIN=$2
 BRANCH=$3
 
-# Implement your script here.
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-exit 0
+$SCRIPT_PATH/filter-flow-hotfix-finish-tag-message
+
+# Implement your script here.
+for key in gitflow.branch.develop gitflow.branch.master; do
+  base_branch=$(git config --list | grep $key | cut -d '=' -f 2)
+  git checkout $base_branch
+  $SCRIPT_PATH/modules/pull-newest-branch.sh $key
+  git push --force-with-lease
+done
+
+git push --tags

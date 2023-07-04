@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
-exit 0
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+for key in gitflow.branch.develop gitflow.branch.master; do
+  base_branch=$(git config --list | grep $key | tail -n 1 | cut -d '=' -f 2)
+  git checkout $base_branch
+  $SCRIPT_PATH/modules/pull-newest-branch.sh $key
+  git push --force-with-lease
+done

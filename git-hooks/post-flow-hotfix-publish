@@ -20,4 +20,3 @@ BRANCH=$3
 
 # Implement your script here.
 
-git push --tags
