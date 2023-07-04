@@ -9,4 +9,9 @@ ${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.master
 
 $SCRIPT_PATH/filter-flow-hotfix-finish-message
 
+$SCRIPT_PATH/generate-changelog.sh
+
+git add .
+git commit --amend --no-edit
+
 git push origin hotfix/$VERSION -f

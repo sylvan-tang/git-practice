@@ -26,7 +26,13 @@ fi
 if [[ ! -z $tag_exists ]]; then
   exit 0
 fi
-echo "# RELEASE $current_tag" > CHANGELOG.tmp.md
+
+TITLE="RELEASE"
+n=${#current_tag}
+if [[ $n -eq 8 ]]; then
+  TITLE="HOTFIX"
+fi
+echo "# $TITLE $current_tag" > CHANGELOG.tmp.md
 echo "" >> CHANGELOG.tmp.md
 echo "| commit | commit author name | commit date | title |" >> CHANGELOG.tmp.md
 echo "| ---- | ---- | ---- | ---- |" >> CHANGELOG.tmp.md
