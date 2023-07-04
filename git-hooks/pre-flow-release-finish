@@ -9,11 +9,12 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 author_name=$(git config --list | grep user.name | tail -n 1 | cut -d "=" -f 2)
 if [[ "$ADMIN_USERS" =~ "$author_name" ]]; then
-  branch_name=hotfix/$VERSION
+  branch_name=release/$VERSION
   if [[ "${branch_name}" != "${CURRENT_BRANCH}" ]]; then
     echo "fetch your ${branch_name} with: git fetch origin $branch_name:$branch_name"
     exit 1
   fi
+  git branch --set-upstream-to=origin/$branch_name $branch_name
   git config pull.rebase true
   git pull
   exit 0

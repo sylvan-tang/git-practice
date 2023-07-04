@@ -1,3 +1,20 @@
+# RELEASE v2.0.3
+
+| commit | commit author name | commit date | title |
+| ---- | ---- | ---- | ---- |
+| 114a85a | sylvan | 2023-07-04 | Bugfix: disable debug message. Ref: #4 |
+| 63d2e59 | sylvan | 2023-07-04 | Feature: admin user to finish branch. Ref: #2 |
+| 76ccb1f | GitHub | 2023-07-03 | Merge pull request #20 from sylvan-tang/release/v2.0.2 |
+| e507c4d | sylvan | 2023-07-03 | Feature: change log. Ref: #1 |
+| 396bd11 | GitHub | 2023-07-03 | Merge pull request #18 from sylvan-tang/release/v2.0.1 |
+| ed84d19 | sylvan | 2023-07-03 | Feature: change log. Ref: #997 |
+| 21f2586 | GitHub | 2023-07-03 | Merge pull request #16 from sylvan-tang/feature/test-develop |
+| 1fa13f4 | sylvan | 2023-07-03 | Bugfix: git pull for base branch pre git-flow. Ref: #998 |
+| e046dd9 | GitHub | 2023-07-03 | Merge pull request #15 from sylvan-tang/hotfix/v2.0.0.1 |
+| 44576fe | sylvan | 2023-07-03 | Bugfix: fix get next version. Ref: #992 |
+| 498ef07 | sylvan | 2023-07-03 | Bugfix: fix base_branch from git config. Ref: #991 (#12) |
+| b694ab2 | sylvan | 2023-07-03 | Bugfix: support git-flow delete command. Ref #999 (#10) |
+
 # RELEASE v2.0.2
 
 | commit | commit author name | commit date | title |

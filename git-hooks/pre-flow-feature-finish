@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -ex
+set -e
 
 NAME=$1
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -14,6 +14,7 @@ if [[ "$ADMIN_USERS" =~ "$author_name" ]]; then
     echo "fetch your ${branch_name} with: git fetch origin $branch_name:$branch_name"
     exit 1
   fi
+  git branch --set-upstream-to=origin/$branch_name $branch_name
   git config pull.rebase true
   git pull
   ${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.develop
