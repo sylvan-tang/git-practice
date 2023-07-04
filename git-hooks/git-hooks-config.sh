@@ -9,3 +9,5 @@ git config gitflow.path.hooks $HOOKS_PATH
 
 git config gitflow.hotfix.finish.message "Hotfix %tag%"
 git config gitflow.release.finish.message "Release %tag%"
+
+git config pull.rebase true

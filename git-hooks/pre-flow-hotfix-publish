@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
+VERSION=$1
+
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.master
 
 $SCRIPT_PATH/filter-flow-hotfix-finish-message
 
-$SCRIPT_PATH/filter-flow-hotfix-finish-tag-message
-
-git push -f
+git push origin hotfix/$VERSION -f

@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+VERSION=$1
+
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 $SCRIPT_PATH/filter-flow-release-finish-message
-$SCRIPT_PATH/filter-flow-release-finish-tag-message
+
+$SCRIPT_PATH/generate-changelog.sh
 
 git add .
 git commit --amend --no-edit
 
-git push -f
+git push origin release/$VERSION -f

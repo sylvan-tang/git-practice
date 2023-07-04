@@ -1,11 +1,24 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
+NAME=$1
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.develop
+. "$SCRIPT_PATH/modules/functions.sh"
 
-$SCRIPT_PATH/filter-flow-feature-finish-message
+author_name=$(git config --list | grep user.name | tail -n 1 | cut -d "=" -f 2)
+echo "$ADMIN_USERS" "$author_name"
+if [[ "$ADMIN_USERS" =~ "$author_name" ]]; then
+  branch_name=feature/$NAME
+  if [[ "${branch_name}" != "${CURRENT_BRANCH}" ]]; then
+    echo "fetch your ${branch_name} with: git fetch origin $branch_name:$branch_name"
+    exit 1
+  fi
+  git config pull.rebase true
+  git pull
+  ${SCRIPT_PATH}/modules/pull-newest-branch.sh gitflow.branch.develop
+  exit 0
+fi
 
-echo "disable finish in local mode"
+echo "you can't finish in local mode"
 exit 1

@@ -3,7 +3,7 @@
 set -e
 
 # check if commit message is the right format
-compare_branch=$(git config --list | grep $1 | cut -d '=' -f 2)
+compare_branch=$(git config --list | grep $1 | tail -n 1 | cut -d '=' -f 2)
 
 msg_count=$(git --no-pager log $compare_branch..HEAD --decorate=short --pretty=oneline | wc | awk '{print $1}')
 if [ $msg_count -ne 1 ]; then
