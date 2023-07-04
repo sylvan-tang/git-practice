@@ -4,16 +4,18 @@ COLOR_RED=$(printf '\e[0;31m')
 COLOR_DEFAULT=$(printf '\e[m')
 ICON_CROSS=$(printf $COLOR_RED'✘'$COLOR_DEFAULT)
 
-ROOT_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
-HOOKS_DIR=$(dirname $SCRIPT_PATH)
+script_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+HOOKS_DIR=$(dirname $script_path)
 
 if [ -f "$HOOKS_DIR/git-flow-hooks-config.sh" ]; then
-    . "$HOOKS_DIR/git-flow-hooks-config.sh"
+    source "$HOOKS_DIR/git-flow-hooks-config.sh"
 fi
 
 if [ -f "$ROOT_DIR/.git/git-flow-hooks-config.sh" ]; then
-    . "$ROOT_DIR/.git/git-flow-hooks-config.sh"
+    source "$ROOT_DIR/.git/git-flow-hooks-config.sh"
 fi
+
+export CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 function __print_fail {
     echo -e "  $ICON_CROSS $1"
